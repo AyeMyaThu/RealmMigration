@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.cloudsource.realmmigration.obj.tbl_constitution;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,7 +14,6 @@ import java.io.InputStream;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import io.realm.RealmMigration;
 
 public class MainActivity extends AppCompatActivity {
     Realm realm,realmContact;

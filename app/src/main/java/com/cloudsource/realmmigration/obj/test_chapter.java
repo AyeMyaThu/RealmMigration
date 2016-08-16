@@ -1,4 +1,4 @@
-package com.cloudsource.realmmigration;
+package com.cloudsource.realmmigration.obj;
 
 import io.realm.RealmObject;
 import io.realm.annotations.Required;
