@@ -15,7 +15,7 @@ import io.realm.RealmConfiguration;
 import io.realm.RealmMigration;
 
 public class MainActivity extends AppCompatActivity {
-    Realm realm;
+    Realm realm,realmContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +29,9 @@ public class MainActivity extends AppCompatActivity {
                 .name("tbl_constitution")
                 .assetFile(this, constitution)
                 .schemaVersion(3)
+                .migration(new MyMigration())
                 .build();
 
-        try {
-            Realm.migrateRealm(config,new MyMigration());
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
         realm = Realm.getInstance(config);
         showStatus("tbl_constitution");
@@ -50,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 .migration(new MyMigration())
                 .build();
 
-        realm = Realm.getInstance(configContact);
+        realmContact = Realm.getInstance(configContact);
         showStatus("tbl_contact");
         showStatus(realm);
-        realm.close();
+        realmContact.close();
     }
 
     private String copyBundledRealmFile(InputStream inputStream, String outFileName) {
